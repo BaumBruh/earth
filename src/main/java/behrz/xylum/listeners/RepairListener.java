@@ -1,6 +1,6 @@
 package behrz.xylum.listeners;
 
-import behrz.xylum.Xylum;
+import behrz.xylum.Earth;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,9 +11,9 @@ import org.bukkit.inventory.ItemStack;
 
 public class RepairListener implements Listener {
 
-    private final Xylum plugin;
+    private final Earth plugin;
 
-    public RepairListener(Xylum plugin){
+    public RepairListener(Earth plugin){
         this.plugin = plugin;
     }
 

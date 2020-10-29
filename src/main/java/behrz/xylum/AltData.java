@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.logging.Level;
 
 public class AltData {
-    private Xylum plugin;
+    private Earth plugin;
 
     private boolean saveData = false;
 
@@ -23,7 +23,7 @@ public class AltData {
 
     private static final String IP_FILE_NAME = "ipdata.yml";
 
-    public AltData(Xylum plugin) {
+    public AltData(Earth plugin) {
         this.plugin = plugin;
         if (plugin.saveInterval > 0L)
             Bukkit.getScheduler().scheduleSyncRepeatingTask((Plugin)plugin, new Runnable() {

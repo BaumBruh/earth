@@ -1,6 +1,6 @@
 package behrz.xylum.listeners;
 
-import behrz.xylum.Xylum;
+import behrz.xylum.Earth;
 import com.palmergames.bukkit.towny.TownyAPI;
 import com.palmergames.bukkit.towny.event.PreDeleteTownEvent;
 import com.palmergames.bukkit.towny.exceptions.EconomyException;
@@ -23,7 +23,7 @@ public class TownDelete implements Listener {
                 town.withdrawFromBank(mayor, (int) balance);
             }
         } catch (TownyException | EconomyException e) {
-        Xylum.getPlugin().getLogger().warning("Failed to transfer nation balance on delete.");
+        Earth.getPlugin().getLogger().warning("Failed to transfer nation balance on delete.");
         }
     }
 }

@@ -1,6 +1,6 @@
 package behrz.xylum.announcer;
 
-import behrz.xylum.Xylum;
+import behrz.xylum.Earth;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -9,9 +9,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class SellAnnouncement extends BukkitRunnable {
 
-    Xylum plugin;
+    Earth plugin;
 
-    public SellAnnouncement(Xylum plugin) {
+    public SellAnnouncement(Earth plugin) {
         this.plugin = plugin;
     }
 

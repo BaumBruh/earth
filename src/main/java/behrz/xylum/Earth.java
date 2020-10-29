@@ -7,9 +7,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import behrz.xylum.announcer.*;
 import org.bukkit.scheduler.BukkitTask;
 
-public final class Xylum extends JavaPlugin {
+public final class Earth extends JavaPlugin {
 
-    private static Xylum plugin;
+    private static Earth plugin;
 
     long expirationTime = 360L;
     long saveInterval = 0L;
@@ -89,13 +89,13 @@ public final class Xylum extends JavaPlugin {
             this.altData.saveIpDataConfig();
     }
 
-    public static Xylum getPlugin() {
+    public static Earth getPlugin() {
         return plugin;
     }
 
     private boolean setupPAPI() {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            new XylumExpansion(this).register();
+            new EarthExpansion(this).register();
             getLogger().info("PlaceholderAPI enabled.");
             return true;
         } else {

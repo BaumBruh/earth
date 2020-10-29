@@ -1,6 +1,6 @@
 package behrz.xylum.listeners;
 
-import behrz.xylum.Xylum;
+import behrz.xylum.Earth;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -10,9 +10,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class World extends BukkitRunnable {
 
-    Xylum plugin;
+    Earth plugin;
 
-    public World(Xylum plugin) { this.plugin = plugin; }
+    public World(Earth plugin) { this.plugin = plugin; }
 
     @Override
     public void run() {

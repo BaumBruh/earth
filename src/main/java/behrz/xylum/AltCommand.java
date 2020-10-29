@@ -13,9 +13,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class AltCommand implements CommandExecutor {
-    private Xylum plugin;
+    private Earth plugin;
 
-    public AltCommand(Xylum plugin) {
+    public AltCommand(Earth plugin) {
         this.plugin = plugin;
     }
 

@@ -4,11 +4,11 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 
-public class XylumExpansion extends PlaceholderExpansion {
+public class EarthExpansion extends PlaceholderExpansion {
 
-    private final Xylum plugin;
+    private final Earth plugin;
 
-    public XylumExpansion(Xylum plugin){
+    public EarthExpansion(Earth plugin){
         this.plugin = plugin;
     }
 

@@ -9,9 +9,9 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 
 public class AltListener implements Listener {
-    private Xylum plugin;
+    private Earth plugin;
 
-    public AltListener(Xylum plugin) {
+    public AltListener(Earth plugin) {
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, (Plugin)plugin);
     }
