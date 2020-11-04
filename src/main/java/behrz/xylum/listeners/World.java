@@ -18,18 +18,87 @@ public class World extends BukkitRunnable {
     public void run() {
         for (Player player : plugin.getServer().getOnlinePlayers()) {
 
-            player.getWorld().getName().equals("MarsRelease");
-            player.addPotionEffect(PotionEffectType.SLOW_FALLING.createEffect(15,1));
-            player.addPotionEffect(PotionEffectType.JUMP.createEffect(15,1));
+            switch (player.getWorld().getName()) {
+                case "MarsRelease":
 
-            player.getGameMode().equals(GameMode.SURVIVAL);
-            if (!armorCheck(player.getEquipment().getHelmet().getType(), player.getEquipment().getChestplate().getType(), player.getEquipment().getLeggings().getType(), player.getEquipment().getBoots().getType())) {
-                player.sendMessage(ChatColor.RED + " " + ChatColor.UNDERLINE + "A spacesuit is required on Mars!");
+                    if (!player.getGameMode().equals(GameMode.SURVIVAL)) {
+                        return;
+                    }
 
-                player.addPotionEffect(PotionEffectType.SLOW.createEffect(2, 3));
-                player.addPotionEffect(PotionEffectType.BLINDNESS.createEffect(2, 1));
-                player.addPotionEffect(PotionEffectType.WITHER.createEffect(2, 5));
+                    if (!player.getActivePotionEffects().contains(PotionEffectType.REGENERATION)) {
+                        if (!armorCheck(player.getEquipment().getHelmet().getType(), player.getEquipment().getChestplate().getType(), player.getEquipment().getLeggings().getType(), player.getEquipment().getBoots().getType())) {
+
+                            player.sendMessage(ChatColor.RED + " " + ChatColor.UNDERLINE + "A spacesuit is required on Mars!");
+                            spacesuitEffects(player);
+                        }
+                    }
+
+
+                case "MoonRelease":
+
+                    if (player.getGameMode().equals(GameMode.SURVIVAL)) {
+                        if (!armorCheck(getHelmet(player), getChestplate(player), getLeggings(player), getBoots(player))) {
+
+                            player.sendMessage(ChatColor.RED + " " + ChatColor.UNDERLINE + "A spacesuit is required on the Moon!");
+                            spacesuitEffects(player);
+                        }
+                    }
+
             }
+        }
+    }
+
+    private void spacesuitEffects(Player player) {
+        player.addPotionEffect(PotionEffectType.WITHER.createEffect(20,5));
+        player.damage(6);
+    }
+
+    private Material getHelmet(Player player) {
+        try {
+            if (player.getEquipment().getHelmet() == null) {
+                return Material.AIR;
+            } else {
+                return player.getEquipment().getHelmet().getType();
+            }
+        } catch (NullPointerException e) {
+            return Material.AIR;
+        }
+
+    }
+
+    private Material getChestplate(Player player) {
+        try {
+            if (player.getEquipment().getChestplate() == null) {
+                return Material.AIR;
+            } else {
+                return player.getEquipment().getChestplate().getType();
+            }
+        } catch (NullPointerException e) {
+            return Material.AIR;
+        }
+    }
+
+    private Material getLeggings(Player player) {
+        try {
+            if (player.getEquipment().getLeggings() == null) {
+                return Material.AIR;
+            } else {
+                return player.getEquipment().getLeggings().getType();
+            }
+        } catch (NullPointerException e) {
+            return Material.AIR;
+        }
+    }
+
+    private Material getBoots(Player player) {
+        try {
+            if (player.getEquipment().getBoots() == null) {
+                return Material.AIR;
+            } else {
+                return player.getEquipment().getBoots().getType();
+            }
+        } catch (NullPointerException e) {
+            return Material.AIR;
         }
     }
 

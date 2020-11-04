@@ -27,6 +27,7 @@ public class VIPPlusCommand implements CommandExecutor {
             player.sendMessage(ChatColor.GRAY + " Access to /enderchest.");
             player.sendMessage(ChatColor.GRAY + " Access to /workbench.");
             player.sendMessage(ChatColor.GRAY + " Right-click shulkers to open.");
+      //      player.sendMessage(ChatColor.WHITE + " 12 render distance.");
             player.sendMessage(" ");
             player.sendMessage(ChatColor.RED + "Purchase this rank, or see its perks in other servers at http://store.xylumearth.net/.");
             player.sendMessage(" ");

@@ -29,6 +29,7 @@ public class MVPCommand implements CommandExecutor {
             player.sendMessage(ChatColor.GRAY + " Colors in /nick.");
             player.sendMessage(ChatColor.GRAY + " Access to /tfly in town claims.");
             player.sendMessage(ChatColor.GRAY + " Right-click shulkers to open.");
+    //        player.sendMessage(ChatColor.WHITE + " 14 render distance.");
             player.sendMessage(" ");
             player.sendMessage(ChatColor.RED + "Purchase this rank, or see its perks in other servers at http://store.xylumearth.net/.");
             player.sendMessage(" ");

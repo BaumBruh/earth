@@ -2,6 +2,7 @@ name: Earth
 version: ${project.version}
 main: behrz.xylum.Earth
 api-version: 1.16
+depend: [Towny, Vault]
 softdepend: [PlaceholderAPI]
 
 commands:
@@ -32,10 +33,12 @@ commands:
   alt:
     description: "Lists possible alt accounts of player."
     permission: altdetector.alt
-  tag:
+  suffix:
     description: "toog"
-    permission: tag.use
-    aliases: [suffix]
+    permission: xylum.suffix.use
+  prefix:
+    description: "pre"
+    permission: xylum.prefix.use
   color:
     description: "coolor"
     aliases: [colors]
@@ -104,6 +107,3 @@ permissions:
   altdetector.notify:
     description: Notifies this player when an alt is detected
     default: op
-  tag.use:
-    description: Set tags
-    default: false

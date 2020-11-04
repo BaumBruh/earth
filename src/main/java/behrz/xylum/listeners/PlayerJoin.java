@@ -14,41 +14,40 @@ public class PlayerJoin implements Listener {
         ev.setJoinMessage(ChatColor.translateAlternateColorCodes('&', " &a&o" + player.getDisplayName() + "&a&o joined the server."));
 
         // MOTD
-        try { wait(5L); } catch (InterruptedException ignored) {}
         motdMessage(player);
-        player.setViewDistance(8);
+      //  player.setViewDistance(8);
         perksMessage(player);
 
     }
 
     private void motdMessage(Player player) {
         player.sendMessage(ChatColor.DARK_AQUA + "[MOTD] " + ChatColor.AQUA + "/help lists important commands from many of our plugins.");
-        player.sendMessage(ChatColor.GREEN + "       You can receive gold and other rewards through /vote.");
-        player.sendMessage(ChatColor.GREEN + "       For more help, contact a staff member in-game or in /discord.");
-        player.sendMessage(ChatColor.GREEN + "       Switch servers through /plots and /earth.");
+        player.sendMessage(ChatColor.AQUA + "         You can receive gold and other rewards through /vote.");
+        player.sendMessage(ChatColor.AQUA + "         For more help, contact a staff member in-game or in /discord.");
+        player.sendMessage(ChatColor.AQUA + "         Switch servers through /plots and /earth.");
     }
 
     private void perksMessage(Player player) {
         player.hasPermission("motd.perks");
         player.sendMessage(ChatColor.DARK_GREEN + "[Perks] " + ChatColor.GREEN + "Thanks for donating! Here's some of your perks:");
-        int render = 8;
+      //  int render = 8;
         if (player.hasPermission("motd.vip")) {
-            player.sendMessage(ChatColor.GREEN + "        VIP: ");
-            render = 10;
+            player.sendMessage(ChatColor.GREEN + "           VIP: " + ChatColor.GRAY + "VIP kit, /feed, /nightvision, /enderchest, /workbench. Full list at [/vip]");
+       //     render = 10;
         }
         if (player.hasPermission("motd.vip+")) {
-            player.sendMessage(ChatColor.GREEN + "        VIP+: ");
-            render = 12;
+            player.sendMessage(ChatColor.GREEN + "           VIP+: " + ChatColor.GRAY + "All VIP perks, VIP+ kit, /hat, and ability to right-click shulkers to open. Full list at [/vip+]");
+      //      render = 12;
         }
         if (player.hasPermission("motd.mvp")) {
-            player.sendMessage(ChatColor.GREEN + "        MVP: ");
-            render = 14;
+            player.sendMessage(ChatColor.GREEN + "           MVP: " + ChatColor.GRAY + "All VIP/VIP+ perks, MVP kit, /tfly, /nick. Full list at [/mvp]");
+       //     render = 14;
         }
         if (player.hasPermission("motd.mvp+")) {
-            player.sendMessage(ChatColor.GREEN + "        MVP+: ");
-            render = 16;
+            player.sendMessage(ChatColor.GREEN + "           MVP+: " + ChatColor.GRAY + "All VIP/VIP+/MVP perks, MVP+ kit, /kittycannon, /chestsort, /inventorysort, colored anvil names. Full list at [/mvp+]");
+       //     render = 16;
         }
-        player.setViewDistance(render);
+     //   player.setViewDistance(render);
     }
 
 }

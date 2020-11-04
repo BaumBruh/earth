@@ -14,12 +14,11 @@ public class MobKill implements Listener {
     @EventHandler
     public void earthEvoker(EntityDeathEvent event) {
         event.getEntity().getLocation().getWorld().getName().equals("EarthRelease");
-        event.getEntity().equals(EntityType.EVOKER);
-
-        List<ItemStack> drops = event.getDrops();
-        drops.clear();
-        drops.add(new ItemStack(Material.EMERALD, 2));
-        drops.add(new ItemStack(Material.ENDER_EYE, 1));
-
+        if (event.getEntity().equals(EntityType.EVOKER)) {
+            List<ItemStack> drops = event.getDrops();
+            drops.clear();
+            drops.add(new ItemStack(Material.EMERALD, 2));
+            drops.add(new ItemStack(Material.ENDER_EYE, 1));
+        }
     }
 }

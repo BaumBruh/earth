@@ -33,6 +33,7 @@ public class MVPPlusCommand implements CommandExecutor {
             player.sendMessage(ChatColor.YELLOW + " Chest sorting (/chestsort)");
             player.sendMessage(ChatColor.GRAY + " Access to /tfly in town claims.");
             player.sendMessage(ChatColor.GRAY + " Right-click shulkers to open.");
+       //     player.sendMessage(ChatColor.WHITE + " 16 render distance.");
             player.sendMessage(" ");
             player.sendMessage(ChatColor.RED + "Purchase this rank, or see its perks in other servers at http://store.xylumearth.net/.");
             player.sendMessage(" ");

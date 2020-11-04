@@ -24,17 +24,17 @@ public final class Earth extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
-        getServer().getPluginManager().registerEvents(new PlayerCommand(), this);
-        getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
+//        getServer().getPluginManager().registerEvents(new PlayerCommand(), this);
+//        getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
         getServer().getPluginManager().registerEvents(new PlayerMove(), this);
 //      getServer().getPluginManager().registerEvents(new PlayerAdvancement(), this);
         getServer().getPluginManager().registerEvents(new Riptide(), this);
         getServer().getPluginManager().registerEvents(new RepairListener(this), this);
         getServer().getPluginManager().registerEvents(new Riptide(), this);
-        getServer().getPluginManager().registerEvents(new MobKill(), this);
-        getServer().getPluginManager().registerEvents(new MobSpawn(), this);
-        getServer().getPluginManager().registerEvents(new NationDelete(), this);
-        getServer().getPluginManager().registerEvents(new TownDelete(), this);
+   //     getServer().getPluginManager().registerEvents(new MobKill(), this);
+   //     getServer().getPluginManager().registerEvents(new MobSpawn(), this);
+   //     getServer().getPluginManager().registerEvents(new NationDelete(), this);
+   //     getServer().getPluginManager().registerEvents(new TownDelete(), this);
         getLogger().info("Loaded events.");
 
         getCommand("map").setExecutor(new MapCommand());
@@ -48,14 +48,15 @@ public final class Earth extends JavaPlugin {
         getCommand("vip+").setExecutor(new VIPPlusCommand());
         getCommand("mvp").setExecutor(new MVPCommand());
         getCommand("nightvision").setExecutor(new NVCommand());
-        getCommand("tag").setExecutor(new TagCommand());
-        getCommand("tag").setTabCompleter(new TagTabCompleter());
+        getCommand("suffix").setExecutor(new SuffixCommand());
+        getCommand("suffix").setTabCompleter(new SuffixTabCompleter());
+        getCommand("prefix").setExecutor(new PrefixCommand());
+        getCommand("prefix").setTabCompleter(new PrefixTabCompleter());
         getCommand("color").setExecutor(new ColorCommand());
         getCommand("alt").setExecutor(new AltCommand(this));
         getLogger().info("Loaded commands.");
 
-        BukkitTask sell = new SellAnnouncement(this).runTaskTimer(this,6000l,42000l);
-//      BukkitTask store = new StoreAnnouncement(this).runTaskTimer(this,6000l,42000l);
+        BukkitTask sell = new StoreAnnouncement(this).runTaskTimer(this,6000l,42000l);BukkitTask store = new StoreAnnouncement(this).runTaskTimer(this,6000l,42000l);
         BukkitTask discord = new DiscordAnnouncement(this).runTaskTimer(this,12000l,42000l);
         BukkitTask map = new MapAnnouncement(this).runTaskTimer(this,18000l,42000l);
         BukkitTask vote = new VoteAnnouncement(this).runTaskTimer(this,24000l,42000l);
@@ -63,8 +64,9 @@ public final class Earth extends JavaPlugin {
         BukkitTask wiki = new WikiAnnouncement(this).runTaskTimer(this,36000l,42000l);
         BukkitTask bounty = new BountyAnnouncement(this).runTaskTimer(this,42000l,42000l);
 
-        BukkitTask world = new World(this).runTaskTimer(this,0l,20l);
-        getLogger().info("Loaded announcements and world effects.");
+      //  BukkitTask world = new World(this).runTaskTimer(this,20l,20l);
+      //  getLogger().info("Loaded announcements and world effects.");
+        getLogger().info("Loaded announcements.");
 
         setupPAPI();
 

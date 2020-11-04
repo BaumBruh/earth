@@ -24,6 +24,7 @@ public class VIPCommand implements CommandExecutor {
             player.sendMessage(ChatColor.GRAY + " Access to /nightvision.");
             player.sendMessage(ChatColor.GRAY + " Access to /enderchest.");
             player.sendMessage(ChatColor.GRAY + " Access to /workbench.");
+       //     player.sendMessage(ChatColor.WHITE + " 10 render distance.");
             player.sendMessage(" ");
             player.sendMessage(ChatColor.RED + "Purchase this rank, or see its perks in other servers at http://store.xylumearth.net/.");
             player.sendMessage(" ");
