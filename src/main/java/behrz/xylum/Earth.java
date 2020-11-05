@@ -2,7 +2,6 @@ package behrz.xylum;
 
 import behrz.xylum.commands.*;
 import behrz.xylum.listeners.*;
-import github.scarsz.discordsrv.DiscordSRV;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -30,12 +29,8 @@ public final class Earth extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
         getServer().getPluginManager().registerEvents(new PlayerMove(), this);
         getServer().getPluginManager().registerEvents(new Riptide(), this);
-        getServer().getPluginManager().registerEvents(new RepairListener(this), this);
+        getServer().getPluginManager().registerEvents(new AnvilRepair(this), this);
         getServer().getPluginManager().registerEvents(new Riptide(), this);
-   //   getServer().getPluginManager().registerEvents(new MobKill(), this);
-   //   getServer().getPluginManager().registerEvents(new MobSpawn(), this);
-        getServer().getPluginManager().registerEvents(new TownNationCreate(), this);
-        getServer().getPluginManager().registerEvents(new TownNationDelete(), this);
         getServer().getPluginManager().registerEvents(new Spawn(), this);
         getLogger().info("Loaded events.");
 
@@ -49,7 +44,7 @@ public final class Earth extends JavaPlugin {
         getCommand("vip").setExecutor(new VIPCommand());
         getCommand("vip+").setExecutor(new VIPPlusCommand());
         getCommand("mvp").setExecutor(new MVPCommand());
-        getCommand("nightvision").setExecutor(new NVCommand());
+        getCommand("nightvision").setExecutor(new NightVisionCommand());
         getCommand("suffix").setExecutor(new SuffixCommand());
         getCommand("suffix").setTabCompleter(new SuffixCommand());
         getCommand("prefix").setExecutor(new PrefixCommand());
@@ -66,9 +61,6 @@ public final class Earth extends JavaPlugin {
         BukkitTask wiki = new WikiAnnouncement(this).runTaskTimer(this,36000l,42000l);
         BukkitTask bounty = new BountyAnnouncement(this).runTaskTimer(this,42000l,42000l);
         getLogger().info("Loaded announcements.");
-
-    //  BukkitTask world = new World(this).runTaskTimer(this,20l,20l);
-    //  getLogger().info("Loaded announcements and world effects.");
 
         setupPAPI();
         if (!setupEconomy() ) {
@@ -101,6 +93,13 @@ public final class Earth extends JavaPlugin {
         return plugin;
     }
 
+    public static boolean usingPermissions() {
+        return true;
+    }
+    public static boolean usingPermissionsForNonNameChanges() {
+        return true;
+    }
+
     private boolean setupPAPI() {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new EarthExpansion(this).register();
@@ -126,9 +125,5 @@ public final class Earth extends JavaPlugin {
 
     public static Economy getEconomy() {
         return econ;
-    }
-
-    public static void sendDiscord(String channel, String message) {
-        DiscordSRV.getPlugin().getDestinationTextChannelForGameChannelName(channel).sendMessage(message).queue();
     }
 }
