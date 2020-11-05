@@ -1,6 +1,8 @@
 package behrz.xylum.listeners;
 
 import behrz.xylum.Earth;
+import net.milkbowl.vault.economy.Economy;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,8 +29,17 @@ public class RepairListener implements Listener {
             if (task == null)
                 task = new AnvilTask(inv, player, plugin);
             if (event.getRawSlot() == 2) {
-                ItemStack translatedItem = ColorHandler.getTranslatedItem(player, inv,task);
-                event.setCurrentItem(translatedItem);
+                ItemStack translatedItem = ColorHandler.getTranslatedItem(player, inv, task);
+                if (!(translatedItem == event.getCurrentItem())) {
+
+                    Economy economy = Earth.getEconomy();
+                    if (economy.has(player, player.getWorld().getName(), 250)) {
+                        economy.withdrawPlayer(player, player.getWorld().getName(), 250);
+                        event.setCurrentItem(translatedItem);
+                    } else {
+                        player.sendMessage(ChatColor.DARK_RED + "[Color] " + ChatColor.RED + "Renaming an item with colors costs 250 gold!");
+                    }
+                }
             }
         }
     }

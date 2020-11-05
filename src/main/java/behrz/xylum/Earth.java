@@ -2,7 +2,10 @@ package behrz.xylum;
 
 import behrz.xylum.commands.*;
 import behrz.xylum.listeners.*;
+import github.scarsz.discordsrv.DiscordSRV;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import behrz.xylum.announcer.*;
 import org.bukkit.scheduler.BukkitTask;
@@ -10,6 +13,7 @@ import org.bukkit.scheduler.BukkitTask;
 public final class Earth extends JavaPlugin {
 
     private static Earth plugin;
+    private static Economy econ = null;
 
     long expirationTime = 360L;
     long saveInterval = 0L;
@@ -24,17 +28,15 @@ public final class Earth extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
-//        getServer().getPluginManager().registerEvents(new PlayerCommand(), this);
-//        getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
         getServer().getPluginManager().registerEvents(new PlayerMove(), this);
-//      getServer().getPluginManager().registerEvents(new PlayerAdvancement(), this);
         getServer().getPluginManager().registerEvents(new Riptide(), this);
         getServer().getPluginManager().registerEvents(new RepairListener(this), this);
         getServer().getPluginManager().registerEvents(new Riptide(), this);
-   //     getServer().getPluginManager().registerEvents(new MobKill(), this);
-   //     getServer().getPluginManager().registerEvents(new MobSpawn(), this);
-   //     getServer().getPluginManager().registerEvents(new NationDelete(), this);
-   //     getServer().getPluginManager().registerEvents(new TownDelete(), this);
+   //   getServer().getPluginManager().registerEvents(new MobKill(), this);
+   //   getServer().getPluginManager().registerEvents(new MobSpawn(), this);
+        getServer().getPluginManager().registerEvents(new TownNationCreate(), this);
+        getServer().getPluginManager().registerEvents(new TownNationDelete(), this);
+        getServer().getPluginManager().registerEvents(new Spawn(), this);
         getLogger().info("Loaded events.");
 
         getCommand("map").setExecutor(new MapCommand());
@@ -43,15 +45,15 @@ public final class Earth extends JavaPlugin {
         getCommand("store").setExecutor(new StoreCommand());
         getCommand("wiki").setExecutor(new WikiCommand());
         getCommand("rules").setExecutor(new RulesCommand());
-        getCommand("rules").setTabCompleter(new RulesTabCompleter());
+        getCommand("rules").setTabCompleter(new RulesCommand());
         getCommand("vip").setExecutor(new VIPCommand());
         getCommand("vip+").setExecutor(new VIPPlusCommand());
         getCommand("mvp").setExecutor(new MVPCommand());
         getCommand("nightvision").setExecutor(new NVCommand());
         getCommand("suffix").setExecutor(new SuffixCommand());
-        getCommand("suffix").setTabCompleter(new SuffixTabCompleter());
+        getCommand("suffix").setTabCompleter(new SuffixCommand());
         getCommand("prefix").setExecutor(new PrefixCommand());
-        getCommand("prefix").setTabCompleter(new PrefixTabCompleter());
+        getCommand("prefix").setTabCompleter(new PrefixCommand());
         getCommand("color").setExecutor(new ColorCommand());
         getCommand("alt").setExecutor(new AltCommand(this));
         getLogger().info("Loaded commands.");
@@ -63,12 +65,17 @@ public final class Earth extends JavaPlugin {
         BukkitTask company = new CompanyAnnouncement(this).runTaskTimer(this,30000l,42000l);
         BukkitTask wiki = new WikiAnnouncement(this).runTaskTimer(this,36000l,42000l);
         BukkitTask bounty = new BountyAnnouncement(this).runTaskTimer(this,42000l,42000l);
-
-      //  BukkitTask world = new World(this).runTaskTimer(this,20l,20l);
-      //  getLogger().info("Loaded announcements and world effects.");
         getLogger().info("Loaded announcements.");
 
+    //  BukkitTask world = new World(this).runTaskTimer(this,20l,20l);
+    //  getLogger().info("Loaded announcements and world effects.");
+
         setupPAPI();
+        if (!setupEconomy() ) {
+            getLogger().severe("Disabled due to no Vault dependency found!");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
 
         this.config = new Config();
         saveDefaultConfig();
@@ -85,7 +92,6 @@ public final class Earth extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
         getLogger().info("Shutting down...");
         if (this.saveInterval > 0L)
             this.altData.saveIpDataConfig();
@@ -104,5 +110,25 @@ public final class Earth extends JavaPlugin {
             getLogger().info("PlaceholderAPI not found.");
             return false;
         }
+    }
+
+    private boolean setupEconomy() {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if (rsp == null) {
+            return false;
+        }
+        econ = rsp.getProvider();
+        return econ != null;
+    }
+
+    public static Economy getEconomy() {
+        return econ;
+    }
+
+    public static void sendDiscord(String channel, String message) {
+        DiscordSRV.getPlugin().getDestinationTextChannelForGameChannelName(channel).sendMessage(message).queue();
     }
 }

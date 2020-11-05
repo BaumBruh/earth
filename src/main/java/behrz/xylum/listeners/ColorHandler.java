@@ -8,10 +8,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class ColorHandler {
 
-    public static boolean hasColor(String s, ChatColor c) {
-        return s.contains((CharSequence)c);
-    }
-
     public static boolean hasColorPermission(Player p, char c) {
         return !(!p.hasPermission("coloredanvils.*") && !p.hasPermission("coloredanvils.color.*") &&
                 !p.hasPermission("coloredanvils.color." + c) && !p.hasPermission("coloredanvils.color.&" + c));

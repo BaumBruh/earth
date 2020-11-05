@@ -21,118 +21,117 @@ public class MobSpawn implements Listener {
         World world = event.getLocation().getWorld();
         Location loc = event.getLocation();
 
-        if (world.getName().equals("MarsRelease")) {
-            switch (spawned.getType()) {
-                case SKELETON:
-                    if (chance((int) 0.5)) {
-                        spawned.remove();
-                        world.spawnEntity(loc, EntityType.ILLUSIONER);
-                        return;
-                    } else if (chance((int) 0.5)) {
-                        spawned.remove();
-                        world.spawnEntity(loc, EntityType.EVOKER);
-                        return;
-                    } else if (chance((int) 0.5)) {
-                        spawned.remove();
-                        world.spawnEntity(loc, EntityType.MAGMA_CUBE);
-                        return;
-                    } else if (chance((int) 0.5)) {
-                        spawned.remove();
-                        world.spawnEntity(loc, EntityType.WITHER_SKELETON);
-                        return;
-                    }
+        switch (world.getName()) {
+            case "MarsRelease":
+                switch (spawned.getType()) {
+                    case SKELETON:
+                        if (chance((int) 0.5)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.ILLUSIONER);
+                            return;
+                        } else if (chance((int) 0.5)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.EVOKER);
+                            return;
+                        } else if (chance((int) 0.5)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.MAGMA_CUBE);
+                            return;
+                        } else if (chance((int) 0.5)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.WITHER_SKELETON);
+                            return;
+                        }
 
-                    Skeleton skeleton = (Skeleton) spawned;
-                    goldSkeleton(skeleton);
+                        Skeleton skeleton = (Skeleton) spawned;
+                        goldSkeleton(skeleton);
 
-                case ZOMBIE:
-                    if (chance(10)) {
+                    case ZOMBIE:
+                        if (chance(10)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.PILLAGER);
+                            return;
+                        } else if (chance(10)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.VINDICATOR);
+                            return;
+                        }
+
+                        Zombie zombie = (Zombie) spawned;
+                        goldZombie(zombie);
+
+                    case ZOMBIE_VILLAGER:
                         spawned.remove();
-                        world.spawnEntity(loc, EntityType.PILLAGER);
+                        world.spawnEntity(loc, EntityType.RAVAGER);
                         return;
-                    } else if (chance(10)) {
+
+                    case WANDERING_TRADER:
                         spawned.remove();
-                        world.spawnEntity(loc, EntityType.VINDICATOR);
+                        world.spawnEntity(loc, EntityType.RAVAGER);
                         return;
-                    }
 
-                    Zombie zombie = (Zombie) spawned;
-                    goldZombie(zombie);
+                    case CREEPER:
+                        if (chance(30)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.BLAZE);
+                            return;
+                        }
+                }
+            case "MoonRelease":
+                switch (spawned.getType()) {
+                    case SKELETON:
+                        if (chance((int) 0.5)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.ILLUSIONER);
+                            return;
+                        } else if (chance((int) 0.5)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.EVOKER);
+                            return;
+                        } else if (chance((int) 0.5)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.MAGMA_CUBE);
+                            return;
+                        } else if (chance((int) 0.5)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.WITHER_SKELETON);
+                            return;
+                        }
 
-                case ZOMBIE_VILLAGER:
-                    spawned.remove();
-                    world.spawnEntity(loc, EntityType.RAVAGER);
-                    return;
+                        Skeleton skeleton = (Skeleton) spawned;
+                        goldSkeleton(skeleton);
 
-                case WANDERING_TRADER:
-                    spawned.remove();
-                    world.spawnEntity(loc, EntityType.RAVAGER);
-                    return;
+                    case ZOMBIE:
+                        if (chance(10)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.PILLAGER);
+                            return;
+                        } else if (chance(10)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.VINDICATOR);
+                            return;
+                        }
 
-                case CREEPER:
-                    if (chance(30)) {
+                        Zombie zombie = (Zombie) spawned;
+                        goldZombie(zombie);
+
+                    case ZOMBIE_VILLAGER:
                         spawned.remove();
-                        world.spawnEntity(loc, EntityType.BLAZE);
+                        world.spawnEntity(loc, EntityType.RAVAGER);
                         return;
-                    }
-            }
 
-        } else if (world.getName().equals("MoonRelease")) {
-            switch (spawned.getType()) {
-                case SKELETON:
-                    if (chance((int) 0.5)) {
+                    case WANDERING_TRADER:
                         spawned.remove();
-                        world.spawnEntity(loc, EntityType.ILLUSIONER);
+                        world.spawnEntity(loc, EntityType.RAVAGER);
                         return;
-                    } else if (chance((int) 0.5)) {
-                        spawned.remove();
-                        world.spawnEntity(loc, EntityType.EVOKER);
-                        return;
-                    } else if (chance((int) 0.5)) {
-                        spawned.remove();
-                        world.spawnEntity(loc, EntityType.MAGMA_CUBE);
-                        return;
-                    } else if (chance((int) 0.5)) {
-                        spawned.remove();
-                        world.spawnEntity(loc, EntityType.WITHER_SKELETON);
-                        return;
-                    }
 
-                    Skeleton skeleton = (Skeleton) spawned;
-                    goldSkeleton(skeleton);
-
-                case ZOMBIE:
-                    if (chance(10)) {
-                        spawned.remove();
-                        world.spawnEntity(loc, EntityType.PILLAGER);
-                        return;
-                    } else if (chance(10)) {
-                        spawned.remove();
-                        world.spawnEntity(loc, EntityType.VINDICATOR);
-                        return;
-                    }
-
-                    Zombie zombie = (Zombie) spawned;
-                    goldZombie(zombie);
-
-                case ZOMBIE_VILLAGER:
-                    spawned.remove();
-                    world.spawnEntity(loc, EntityType.RAVAGER);
-                    return;
-
-                case WANDERING_TRADER:
-                    spawned.remove();
-                    world.spawnEntity(loc, EntityType.RAVAGER);
-                    return;
-
-                case CREEPER:
-                    if (chance(30)) {
-                        spawned.remove();
-                        world.spawnEntity(loc, EntityType.BLAZE);
-                        return;
-                    }
-            }
-
+                    case CREEPER:
+                        if (chance(30)) {
+                            spawned.remove();
+                            world.spawnEntity(loc, EntityType.BLAZE);
+                            return;
+                        }
+                }
         }
         return;
     }

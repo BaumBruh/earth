@@ -2,7 +2,7 @@ name: Earth
 version: ${project.version}
 main: behrz.xylum.Earth
 api-version: 1.16
-depend: [Towny, Vault]
+depend: [Towny, Vault, DiscordSRV]
 softdepend: [PlaceholderAPI]
 
 commands:

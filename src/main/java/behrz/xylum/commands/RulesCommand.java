@@ -4,12 +4,14 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import sun.tools.jconsole.Tab;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RulesCommand implements CommandExecutor {
+public class RulesCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -96,5 +98,19 @@ public class RulesCommand implements CommandExecutor {
             System.out.println("Only players can use /rules.");
         }
         return false;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+
+        if (args.length == 1) {
+            ArrayList<String> arguments = new ArrayList<>();
+            arguments.add("1");
+            arguments.add("2");
+
+            return arguments;
+        }
+
+        return null;
     }
 }

@@ -5,9 +5,13 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-public class PrefixCommand implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
+
+public class PrefixCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -114,5 +118,45 @@ public class PrefixCommand implements CommandExecutor {
     private void setPrefix(Player player, String rank,String prefix) {
         Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(), "lp user " + player.getName() + " meta setprefix 35 \"" + prefix + "\"");
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&5[Prefix] &dSuccesfully set prefix to " + rank + "'s."));
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+
+        if (args.length == 1) {
+            ArrayList<String> arguments = new ArrayList<>();
+
+            if (sender.hasPermission("xylum.prefix.use")) {
+                arguments.add("remove");
+            }
+            if (sender.hasPermission("xylum.prefix.youtube")) {
+                arguments.add("youtube");
+            }
+            if (sender.hasPermission("xylum.prefix.beta")) {
+                arguments.add("beta");
+            }
+            if (sender.hasPermission("xylum.prefix.alpha")) {
+                arguments.add("alpha");
+            }
+            if (sender.hasPermission("xylum.prefix.vip")) {
+                arguments.add("vip");
+            }
+            if (sender.hasPermission("xylum.prefix.vip+")) {
+                arguments.add("vip+");
+            }
+            if (sender.hasPermission("xylum.prefix.mvp")) {
+                arguments.add("mvp");
+            }
+            if (sender.hasPermission("xylum.prefix.mvp+")) {
+                arguments.add("mvp+");
+            }
+            if (sender.hasPermission("xylum.prefix.builder")) {
+                arguments.add("builder");
+            }
+
+            return arguments;
+        }
+
+        return null;
     }
 }

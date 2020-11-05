@@ -13,9 +13,7 @@ public class PlayerJoin implements Listener {
         Player player = ev.getPlayer();
         ev.setJoinMessage(ChatColor.translateAlternateColorCodes('&', " &a&o" + player.getDisplayName() + "&a&o joined the server."));
 
-        // MOTD
         motdMessage(player);
-      //  player.setViewDistance(8);
         perksMessage(player);
 
     }
@@ -30,24 +28,18 @@ public class PlayerJoin implements Listener {
     private void perksMessage(Player player) {
         player.hasPermission("motd.perks");
         player.sendMessage(ChatColor.DARK_GREEN + "[Perks] " + ChatColor.GREEN + "Thanks for donating! Here's some of your perks:");
-      //  int render = 8;
         if (player.hasPermission("motd.vip")) {
             player.sendMessage(ChatColor.GREEN + "           VIP: " + ChatColor.GRAY + "VIP kit, /feed, /nightvision, /enderchest, /workbench. Full list at [/vip]");
-       //     render = 10;
         }
         if (player.hasPermission("motd.vip+")) {
             player.sendMessage(ChatColor.GREEN + "           VIP+: " + ChatColor.GRAY + "All VIP perks, VIP+ kit, /hat, and ability to right-click shulkers to open. Full list at [/vip+]");
-      //      render = 12;
         }
         if (player.hasPermission("motd.mvp")) {
             player.sendMessage(ChatColor.GREEN + "           MVP: " + ChatColor.GRAY + "All VIP/VIP+ perks, MVP kit, /tfly, /nick. Full list at [/mvp]");
-       //     render = 14;
         }
         if (player.hasPermission("motd.mvp+")) {
             player.sendMessage(ChatColor.GREEN + "           MVP+: " + ChatColor.GRAY + "All VIP/VIP+/MVP perks, MVP+ kit, /kittycannon, /chestsort, /inventorysort, colored anvil names. Full list at [/mvp+]");
-       //     render = 16;
         }
-     //   player.setViewDistance(render);
     }
 
 }
