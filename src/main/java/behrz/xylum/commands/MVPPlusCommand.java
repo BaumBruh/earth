@@ -27,7 +27,7 @@ public class MVPPlusCommand implements CommandExecutor {
             player.sendMessage(ChatColor.GRAY + " Access to /enderchest.");
             player.sendMessage(ChatColor.GRAY + " Access to /workbench.");
             player.sendMessage(ChatColor.GRAY + " Access to /kittycannon.");
-            player.sendMessage(ChatColor.GRAY + " Color item names in anvil.");
+            player.sendMessage(ChatColor.GRAY + " Format item names in anvil.");
             player.sendMessage(ChatColor.GRAY + " Full access in /nick.");
             player.sendMessage(ChatColor.GRAY + " Access to /particles.");
             player.sendMessage(ChatColor.YELLOW + " Inventory sorting (/inventorysort)");

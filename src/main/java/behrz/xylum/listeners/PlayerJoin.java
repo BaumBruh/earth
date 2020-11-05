@@ -26,7 +26,9 @@ public class PlayerJoin implements Listener {
     }
 
     private void perksMessage(Player player) {
-        player.hasPermission("motd.perks");
+        if (!player.hasPermission("motd.perks")) {
+            return;
+        }
         player.sendMessage(ChatColor.DARK_GREEN + "[Perks] " + ChatColor.GREEN + "Thanks for donating! Here's some of your perks:");
         if (player.hasPermission("motd.vip")) {
             player.sendMessage(ChatColor.GREEN + "           VIP: " + ChatColor.GRAY + "VIP kit, /feed, /nightvision, /enderchest, /workbench. Full list at [/vip]");

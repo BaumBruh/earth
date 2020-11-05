@@ -37,7 +37,7 @@ public class Spawn implements Listener {
             }
         }
 
-        int cost = (int)from.distance(to)/12;
+        int cost = (int)from.distance(to)/18;
         if (hasBalance(player, from.getWorld().getName(), cost)) {
             player.sendMessage(ChatColor.DARK_GREEN + "[Teleport] " + ChatColor.GREEN + "Teleporting has cost you " + cost + " gold.");
             economy.withdrawPlayer(player, player.getWorld().getName(), cost);

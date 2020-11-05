@@ -2,9 +2,7 @@ package behrz.xylum.listeners;
 
 import behrz.xylum.Earth;
 import com.palmergames.bukkit.towny.TownyAPI;
-import com.palmergames.bukkit.towny.event.DeleteNationEvent;
-import com.palmergames.bukkit.towny.event.DeleteTownEvent;
-import com.palmergames.bukkit.towny.event.NationMergeEvent;
+import com.palmergames.bukkit.towny.event.*;
 import com.palmergames.bukkit.towny.exceptions.EconomyException;
 import com.palmergames.bukkit.towny.exceptions.TownyException;
 import com.palmergames.bukkit.towny.object.Nation;
@@ -16,9 +14,13 @@ import org.bukkit.event.Listener;
 public class TownNationDelete implements Listener {
 
     @EventHandler
-    public void onTownDelete(DeleteTownEvent event) {
+    public void onTownDelete(PreDeleteTownEvent event) {
 
-        Earth.sendDiscord("earth-chat"," :milky_way: The town **" + event.getTownName() + "** fell into ruin.");
+        if (event.isCancelled()) {
+            return;
+        }
+
+        Earth.sendDiscord("general"," :milky_way: The town **" + event.getTownName() + "** fell into ruin.");
 
         try {
             Town town = TownyAPI.getInstance().getDataSource().getTown(event.getTownName());
@@ -29,14 +31,18 @@ public class TownNationDelete implements Listener {
                 town.withdrawFromBank(mayor, (int) balance);
             }
         } catch (TownyException | EconomyException e) {
-            Earth.getPlugin().getLogger().warning("Failed to transfer nation balance on delete.");
+            Earth.getPlugin().getLogger().warning("Failed to transfer town balance on deletion.");
         }
     }
 
     @EventHandler
-    public void onNationDelete(DeleteNationEvent event) {
+    public void onNationDelete(PreDeleteNationEvent event) {
 
-        Earth.sendDiscord("earth-chat"," :milky_way: The nation **" + event.getNationName() + "** fell into ruin.");
+        if (event.isCancelled()) {
+            return;
+        }
+
+        Earth.sendDiscord("general"," :milky_way: The nation **" + event.getNationName() + "** fell into ruin.");
 
         try {
             Nation nation = TownyAPI.getInstance().getDataSource().getNation(event.getNationName());
@@ -53,6 +59,6 @@ public class TownNationDelete implements Listener {
 
     @EventHandler
     public void onNationMerge(NationMergeEvent event) {
-        Earth.sendDiscord("earth-chat"," :milky_way: The nation **" + event.getNation().getName() + "** merged into **" + event.getRemainingnation().getName() + "**.");
+        Earth.sendDiscord("general"," :milky_way: The nation **" + event.getNation().getName() + "** merged into **" + event.getRemainingnation().getName() + "**.");
     }
 }

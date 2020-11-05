@@ -32,8 +32,14 @@ public class RepairListener implements Listener {
                 ItemStack translatedItem = ColorHandler.getTranslatedItem(player, inv, task);
                 if (!(translatedItem == event.getCurrentItem())) {
 
+                    if (event.isCancelled()) {
+                        event.setCurrentItem(translatedItem);
+                        return;
+                    }
+
                     Economy economy = Earth.getEconomy();
                     if (economy.has(player, player.getWorld().getName(), 250)) {
+                        player.sendMessage(ChatColor.DARK_GREEN + "[Color] " + ChatColor.GREEN + "You renamed this item for 250 gold.");
                         economy.withdrawPlayer(player, player.getWorld().getName(), 250);
                         event.setCurrentItem(translatedItem);
                     } else {

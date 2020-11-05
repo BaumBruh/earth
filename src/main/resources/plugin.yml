@@ -107,3 +107,13 @@ permissions:
   altdetector.notify:
     description: Notifies this player when an alt is detected
     default: op
+  motd.perks:
+    default: false
+  motd.vip:
+    default: false
+  motd.vip+:
+    default: false
+  motd.mvp:
+    default: false
+  motd.mvp+:
+    default: false
