@@ -58,7 +58,7 @@ public final class Earth extends JavaPlugin {
         getCommand("alt").setExecutor(new AltCommand(this));
         getLogger().info("Loaded commands.");
 
-        BukkitTask sell = new StoreAnnouncement(this).runTaskTimer(this,6000l,42000l);BukkitTask store = new StoreAnnouncement(this).runTaskTimer(this,6000l,42000l);
+        BukkitTask sell = new StoreAnnouncement(this).runTaskTimer(this,6000l,42000l);
         BukkitTask discord = new DiscordAnnouncement(this).runTaskTimer(this,12000l,42000l);
         BukkitTask map = new MapAnnouncement(this).runTaskTimer(this,18000l,42000l);
         BukkitTask vote = new VoteAnnouncement(this).runTaskTimer(this,24000l,42000l);
