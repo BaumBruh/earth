@@ -31,7 +31,6 @@ public final class Earth extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Riptide(), this);
         getServer().getPluginManager().registerEvents(new AnvilRepair(this), this);
         getServer().getPluginManager().registerEvents(new Riptide(), this);
-        getServer().getPluginManager().registerEvents(new Spawn(), this);
         getLogger().info("Loaded events.");
 
         getCommand("map").setExecutor(new MapCommand());

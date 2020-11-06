@@ -117,5 +117,3 @@ permissions:
     default: false
   motd.mvp+:
     default: false
-  teleport.ignorecost:
-    default: false
