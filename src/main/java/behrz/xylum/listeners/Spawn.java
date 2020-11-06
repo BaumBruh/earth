@@ -26,6 +26,10 @@ public class Spawn implements Listener {
 
         Player player = event.getPlayer();
 
+        if (player.hasPermission("teleport.ignorecost")) {
+            return;
+        }
+
         Location from = event.getFrom();
         Location to = event.getTo();
 
@@ -43,11 +47,11 @@ public class Spawn implements Listener {
             }
         }
 
-        int cost = (int)from.distance(to)/36;
+        int cost = (int)from.distance(to)/48;
         cost = residentDiscount(player, cost);
 
         if (isOutpost(to)) {
-            cost = 2*cost/3;
+            cost = cost/4;
             if (hasBalance(player, from.getWorld().getName(), cost)) {
                 player.sendMessage(ChatColor.DARK_GREEN + "[Teleport] " + ChatColor.GREEN + "Teleporting has cost you " + cost + " gold.");
                 economy.withdrawPlayer(player, player.getWorld().getName(), cost);
@@ -97,10 +101,6 @@ public class Spawn implements Listener {
         }
 
         int residents = town.getNumResidents();
-        if (residents != 1) {
-            residents = residents/2;
-        }
-
         return cost/residents;
 
     }

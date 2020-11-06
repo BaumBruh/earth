@@ -35,13 +35,13 @@ public class AnvilRepair implements Listener {
 
                 if (colorCheck(event.getCurrentItem(), player)) {
                     Economy economy = Earth.getEconomy();
-                    if (economy.has(player, player.getWorld().getName(), 100)) {
-                        player.sendMessage(ChatColor.DARK_GREEN + "[Color] " + ChatColor.GREEN + "You renamed this item for 100 gold.");
-                        economy.withdrawPlayer(player, player.getWorld().getName(), 100);
+                    if (economy.has(player, player.getWorld().getName(), 750)) {
+                        player.sendMessage(ChatColor.DARK_GREEN + "[Color] " + ChatColor.GREEN + "You renamed this item for 750 gold.");
+                        economy.withdrawPlayer(player, player.getWorld().getName(), 750);
                     } else {
                         event.setCancelled(true);
                         player.setExp(player.getExp());
-                        player.sendMessage(ChatColor.DARK_RED + "[Color] " + ChatColor.RED + "Renaming an item with colors costs 100 gold!");
+                        player.sendMessage(ChatColor.DARK_RED + "[Color] " + ChatColor.RED + "Renaming an item with colors costs 750 gold!");
                     }
                 }
             }
