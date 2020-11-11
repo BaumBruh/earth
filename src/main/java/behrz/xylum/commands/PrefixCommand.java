@@ -27,7 +27,7 @@ public class PrefixCommand implements CommandExecutor, TabCompleter {
 
             if (args[0].equalsIgnoreCase("alpha")) {
                 if (player.hasPermission("xylum.prefix.alpha")) {
-                    setPrefix(player, "Alpha", "#508028Alpha &r");
+                    setPrefix(player, "Alpha", "#a0c0d8Alpha &r");
                 } else {
                     player.sendMessage(ChatColor.DARK_PURPLE + "[Prefix] " + ChatColor.LIGHT_PURPLE + "You don't have permission for that prefix!");
                 }

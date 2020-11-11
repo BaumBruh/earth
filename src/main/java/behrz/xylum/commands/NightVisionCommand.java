@@ -26,7 +26,7 @@ public class NightVisionCommand implements CommandExecutor {
                     return true;
                 }
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', " &7&oNight vision enabled"));
-                player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 9000000, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 9000000, 2).withParticles(false));
                 return true;
             }
             if (args.length == 1) {

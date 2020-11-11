@@ -55,6 +55,7 @@ public class EarthExpansion extends PlaceholderExpansion {
                     return "essentials not found";
                 }
             case "fbracket":
+            case "localfbracket":
                 String ftown = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_has_town%");
                 if (ftown.equals("true")) {
                     return "#60bce5[";
@@ -65,6 +66,7 @@ public class EarthExpansion extends PlaceholderExpansion {
                 }
 
             case "bbracket":
+            case "localbbracket":
                 String btown = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_has_town%");
                 if (btown.equals("true")) {
                     return "#60bce5] ";
@@ -86,7 +88,7 @@ public class EarthExpansion extends PlaceholderExpansion {
                     return "towny not found";
                 }
             case "isvanished":
-                String vanish = PlaceholderAPI.setPlaceholders(player, "%supervanish_isvanished%");
+                String vanish = PlaceholderAPI.setPlaceholders(player, "%premiumvanish_isvanished%");
                 if (vanish.equals("Yes")) {
                     return " &7[VANISHED]";
                 } else if (vanish.equals("No")){
@@ -133,7 +135,7 @@ public class EarthExpansion extends PlaceholderExpansion {
                 String townnationrank = "";
                 if (hastown) {
                     String tranks = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_town_ranks%");
-                    if (!tranks.equals("")) {
+                    if (tranks.length() > 2) {
                         if (hasnation) {
                             String nranks = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_nation_ranks%") ;
                             if (!nranks.equals("")) {

@@ -33,15 +33,17 @@ public class AnvilRepair implements Listener {
                 ItemStack translatedItem = AnvilColor.getTranslatedItem(player, inv, task);
                 event.setCurrentItem(translatedItem);
 
-                if (colorCheck(event.getCurrentItem(), player)) {
-                    Economy economy = Earth.getEconomy();
-                    if (economy.has(player, player.getWorld().getName(), 750)) {
-                        player.sendMessage(ChatColor.DARK_GREEN + "[Color] " + ChatColor.GREEN + "You renamed this item for 750 gold.");
-                        economy.withdrawPlayer(player, player.getWorld().getName(), 750);
-                    } else {
-                        event.setCancelled(true);
-                        player.setExp(player.getExp());
-                        player.sendMessage(ChatColor.DARK_RED + "[Color] " + ChatColor.RED + "Renaming an item with colors costs 750 gold!");
+                if (!inv.getItem(2).getItemMeta().getDisplayName().equals(translatedItem.getItemMeta().getDisplayName())) {
+                    if (colorCheck(event.getCurrentItem(), player)) {
+                        Economy economy = Earth.getEconomy();
+                        if (economy.has(player, player.getWorld().getName(), 600)) {
+                            player.sendMessage(ChatColor.DARK_GREEN + "[Color] " + ChatColor.GREEN + "You renamed this item for 600 gold.");
+                            economy.withdrawPlayer(player, player.getWorld().getName(), 600);
+                        } else {
+                            event.setCancelled(true);
+                            player.setExp(player.getExp());
+                            player.sendMessage(ChatColor.DARK_RED + "[Color] " + ChatColor.RED + "Renaming an item with colors costs 600 gold!");
+                        }
                     }
                 }
             }
