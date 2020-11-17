@@ -55,7 +55,6 @@ public class EarthExpansion extends PlaceholderExpansion {
                     return "essentials not found";
                 }
             case "fbracket":
-            case "localfbracket":
                 String ftown = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_has_town%");
                 if (ftown.equals("true")) {
                     return "#60bce5[";
@@ -64,13 +63,29 @@ public class EarthExpansion extends PlaceholderExpansion {
                 } else {
                     return "towny not found";
                 }
-
+            case "localfbracket":
+                String fftown = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_has_town%");
+                if (fftown.equals("true")) {
+                    return "#bbf2af[";
+                } else if (fftown.equals("false")){
+                    return "";
+                } else {
+                    return "towny not found";
+                }
             case "bbracket":
-            case "localbbracket":
                 String btown = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_has_town%");
                 if (btown.equals("true")) {
                     return "#60bce5] ";
                 } else if (btown.equals("false")){
+                    return "";
+                } else {
+                    return "towny not found";
+                }
+            case "localbbracket":
+                String bbtown = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_has_town%");
+                if (bbtown.equals("true")) {
+                    return "#bbf2af] ";
+                } else if (bbtown.equals("false")){
                     return "";
                 } else {
                     return "towny not found";
@@ -114,7 +129,7 @@ public class EarthExpansion extends PlaceholderExpansion {
                 }
 
                 String townnation = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_has_town%");
-                Boolean hastown;
+                Boolean hastown = null;
                 Boolean hasnation = null;
                 if (townnation.equals("false")) {
                     hastown = false;
@@ -135,7 +150,7 @@ public class EarthExpansion extends PlaceholderExpansion {
                 String townnationrank = "";
                 if (hastown) {
                     String tranks = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_town_ranks%");
-                    if (tranks.length() > 2) {
+                    if (tranks.contains("Mayor") || tranks.contains("Vicemayor") || tranks.contains("Assistant") || tranks.contains("Helper") || tranks.contains("Sheriff")) {
                         if (hasnation) {
                             String nranks = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_nation_ranks%") ;
                             if (!nranks.equals("")) {

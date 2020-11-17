@@ -18,7 +18,6 @@ public class VIPCommand implements CommandExecutor {
             player.sendMessage(ChatColor.GREEN + "VIP rank perks" + ChatColor.DARK_GRAY + ":");
             player.sendMessage(ChatColor.GREEN + " VIP" + ChatColor.GRAY + " tag.");
             player.sendMessage(ChatColor.GRAY + " Access to VIP resource kit.");
-            player.sendMessage(ChatColor.LIGHT_PURPLE + " Ablity to mention players.");
             player.sendMessage(ChatColor.LIGHT_PURPLE + " Ablity to use [balance] and [bounty] in chat.");
             player.sendMessage(ChatColor.GRAY + " Access to /feed.");
             player.sendMessage(ChatColor.GRAY + " Access to /nightvision.");

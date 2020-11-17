@@ -18,7 +18,6 @@ public class VIPPlusCommand implements CommandExecutor {
             player.sendMessage(ChatColor.DARK_GREEN + "VIP+ rank perks" + ChatColor.DARK_GRAY + ":");
             player.sendMessage(ChatColor.DARK_GREEN + " VIP+" + ChatColor.GRAY + " tag.");
             player.sendMessage(ChatColor.GRAY + " Access to VIP and VIP+ resource kits.");
-            player.sendMessage(ChatColor.LIGHT_PURPLE + " Ablity to mention players.");
             player.sendMessage(ChatColor.LIGHT_PURPLE + " Ablity to use [balance] and [bounty] in chat.");
             player.sendMessage(ChatColor.LIGHT_PURPLE + " Ablity to use [item] in that chat.");
             player.sendMessage(ChatColor.GRAY + " Access to /feed.");

@@ -2,12 +2,18 @@ package behrz.xylum;
 
 import behrz.xylum.commands.*;
 import behrz.xylum.listeners.*;
+import net.md_5.bungee.api.ChatColor;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import behrz.xylum.announcer.*;
 import org.bukkit.scheduler.BukkitTask;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class Earth extends JavaPlugin {
 
@@ -20,6 +26,14 @@ public final class Earth extends JavaPlugin {
     AltData altData;
     AltListener altListener;
 
+    public List<String> colors = new ArrayList<>();
+    public List<String> hex = new ArrayList<>();
+    public List<String> blacklist = new ArrayList<>();
+    public List<String> cmdc = new ArrayList<>();
+    public List<String> getColors() { return this.colors; }
+    public List<String> getHex() { return this.hex; }
+    public List<String> getBlacklist() { return this.blacklist; }
+
     @Override
     public void onEnable() {
 
@@ -29,8 +43,9 @@ public final class Earth extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
         getServer().getPluginManager().registerEvents(new PlayerMove(), this);
         getServer().getPluginManager().registerEvents(new Riptide(), this);
-        getServer().getPluginManager().registerEvents(new AnvilRepair(this), this);
-        getServer().getPluginManager().registerEvents(new Riptide(), this);
+        getServer().getPluginManager().registerEvents(new PlayerAnvil(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
+        getServer().getPluginManager().registerEvents(new EntityExplode(), this);
         getLogger().info("Loaded events.");
 
         getCommand("map").setExecutor(new MapCommand());
@@ -48,8 +63,6 @@ public final class Earth extends JavaPlugin {
         getCommand("suffix").setTabCompleter(new SuffixCommand());
         getCommand("prefix").setExecutor(new PrefixCommand());
         getCommand("prefix").setTabCompleter(new PrefixCommand());
-        getCommand("color").setExecutor(new ColorCommand());
-        getCommand("alt").setExecutor(new AltCommand(this));
         getLogger().info("Loaded commands.");
 
         BukkitTask sell = new StoreAnnouncement(this).runTaskTimer(this,6000l,42000l);
@@ -62,21 +75,13 @@ public final class Earth extends JavaPlugin {
         getLogger().info("Loaded announcements.");
 
         setupPAPI();
-        if (!setupEconomy() ) {
+        setupAlts();
+        setupAnvil();
+        if (!setupEconomy()) {
             getLogger().severe("Disabled due to no Vault dependency found!");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-
-        this.config = new Config();
-        saveDefaultConfig();
-        this.altData = new AltData(this);
-        this.altData.reloadIpDataConfig();
-        int entriesRemoved = this.altData.purge();
-        this.altData.saveIpDataConfig();
-        getLogger().info(entriesRemoved + " record" + ((entriesRemoved == 1) ? "" : "s") + " removed, expiration time " + this.expirationTime + " days.");
-        this.altListener = new AltListener(this);
-        getLogger().info("Sucessfully loaded alts.");
 
         getLogger().info("Fully loaded.");
     }
@@ -124,5 +129,41 @@ public final class Earth extends JavaPlugin {
 
     public static Economy getEconomy() {
         return econ;
+    }
+
+    private void setupAlts() {
+        getCommand("alt").setExecutor(new AltCommand(this));
+        this.config = new Config();
+        saveDefaultConfig();
+        this.altData = new AltData(this);
+        this.altData.reloadIpDataConfig();
+        int entriesRemoved = this.altData.purge();
+        this.altData.saveIpDataConfig();
+        getLogger().info(entriesRemoved + " record" + ((entriesRemoved == 1) ? "" : "s") + " removed, expiration time " + this.expirationTime + " days.");
+        this.altListener = new AltListener(this);
+        getLogger().info("Sucessfully loaded alts.");
+    }
+
+    public boolean Matches(String text, String regex, String regex2) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+        Pattern pattern2 = Pattern.compile(regex2);
+        Matcher matcher2 = pattern2.matcher(text);
+        return !(!matcher.find(1) && !matcher2.find(1));
+    }
+
+    private void setupAnvil() {
+        getConfig().options().copyDefaults(true);
+        saveConfig();
+        for (String s : getConfig().getConfigurationSection("Colors").getKeys(false))
+            this.colors.add(s);
+        int i;
+        for (i = 0; i < this.colors.size(); i++)
+            this.hex.add(getConfig().getString("Colors." + (String)this.colors.get(i)));
+        for (String p : getConfig().getConfigurationSection("Blacklist").getKeys(false))
+            this.blacklist.add(p.toUpperCase());
+        for (i = 0; i < this.colors.size(); i++)
+            this.cmdc.add(ChatColor.of("#" + getConfig().getString("Colors." + (String)this.colors.get(i))) + (String)this.colors.get(i));
+        this.cmdc.add(String.valueOf(ChatColor.WHITE));
     }
 }

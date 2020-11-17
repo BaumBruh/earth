@@ -18,7 +18,6 @@ public class MVPPlusCommand implements CommandExecutor {
             player.sendMessage(ChatColor.GOLD + "MVP+ rank perks" + ChatColor.DARK_GRAY + ":");
             player.sendMessage(ChatColor.GOLD + " MVP+" + ChatColor.GRAY + " tag.");
             player.sendMessage(ChatColor.GRAY + " Access to VIP, VIP+, MVP and MVP+ resource kits.");
-            player.sendMessage(ChatColor.LIGHT_PURPLE + " Ablity to mention players.");
             player.sendMessage(ChatColor.LIGHT_PURPLE + " Ablity to use [balance] and [bounty] in chat.");
             player.sendMessage(ChatColor.LIGHT_PURPLE + " Ablity to use [item], [inv], and [end] in that chat.");
             player.sendMessage(ChatColor.GRAY + " Access to /feed.");
