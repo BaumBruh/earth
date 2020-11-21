@@ -8,12 +8,12 @@ import org.bukkit.entity.Player;
 
 public class VIPCommand implements CommandExecutor {
 
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
+
             player.sendMessage(" ");
             player.sendMessage(ChatColor.GREEN + "VIP rank perks" + ChatColor.DARK_GRAY + ":");
             player.sendMessage(ChatColor.GREEN + " VIP" + ChatColor.GRAY + " tag.");
@@ -26,15 +26,9 @@ public class VIPCommand implements CommandExecutor {
             player.sendMessage(" ");
             player.sendMessage(ChatColor.RED + "Purchase this rank, or see its perks in other servers at http://store.xylumearth.net/.");
             player.sendMessage(" ");
-
-
         } else {
             System.out.println("Only players can use /vip.");
         }
-
-
-
-
         return false;
     }
 }

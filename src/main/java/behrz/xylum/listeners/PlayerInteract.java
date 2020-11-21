@@ -28,8 +28,7 @@ public class PlayerInteract implements Listener {
             if (tamed.getOwner() == player) {
                 return;
             }
-
-            player.sendMessage(ChatColor.GRAY + " " + ChatColor.ITALIC + "" + ChatColor.UNDERLINE + tamed.getOwner().getName() + ChatColor.GRAY + " " + ChatColor.ITALIC + "owns this creature...");
+            player.sendMessage(ChatColor.GRAY + " " + ChatColor.ITALIC + "" + ChatColor.UNDERLINE + tamed.getOwner().getName() + ChatColor.GRAY + " " + ChatColor.ITALIC + "owns this " + entity.getType().getKey().toString().replace("minecraft:", "") + "...");
         }
     }
 }

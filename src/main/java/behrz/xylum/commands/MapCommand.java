@@ -10,12 +10,9 @@ import org.bukkit.entity.Player;
 
 public class MapCommand implements CommandExecutor {
 
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
         if (sender instanceof Player) {
-
             Player player = (Player) sender;
 
             TextComponent message = new TextComponent( "The server dynmap is available at " );
@@ -31,8 +28,6 @@ public class MapCommand implements CommandExecutor {
         } else {
             System.out.println("Only players can use /map.");
         }
-
-
         return false;
     }
 }

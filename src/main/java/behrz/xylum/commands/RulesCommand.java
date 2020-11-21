@@ -18,6 +18,7 @@ public class RulesCommand implements CommandExecutor, TabCompleter {
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
+
             if (args.length > 0) {
                 if (args[0].equalsIgnoreCase("1")) {
                     player.sendMessage(" ");
@@ -110,7 +111,6 @@ public class RulesCommand implements CommandExecutor, TabCompleter {
 
             return arguments;
         }
-
         return null;
     }
 }

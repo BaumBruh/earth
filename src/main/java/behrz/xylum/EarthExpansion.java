@@ -57,7 +57,7 @@ public class EarthExpansion extends PlaceholderExpansion {
             case "fbracket":
                 String ftown = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_has_town%");
                 if (ftown.equals("true")) {
-                    return "#60bce5[";
+                    return "#74b9ff[";
                 } else if (ftown.equals("false")){
                     return "";
                 } else {
@@ -66,7 +66,7 @@ public class EarthExpansion extends PlaceholderExpansion {
             case "localfbracket":
                 String fftown = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_has_town%");
                 if (fftown.equals("true")) {
-                    return "#bbf2af[";
+                    return "#55efc4[";
                 } else if (fftown.equals("false")){
                     return "";
                 } else {
@@ -75,7 +75,7 @@ public class EarthExpansion extends PlaceholderExpansion {
             case "bbracket":
                 String btown = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_has_town%");
                 if (btown.equals("true")) {
-                    return "#60bce5] ";
+                    return "#74b9ff] ";
                 } else if (btown.equals("false")){
                     return "";
                 } else {
@@ -84,7 +84,7 @@ public class EarthExpansion extends PlaceholderExpansion {
             case "localbbracket":
                 String bbtown = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_has_town%");
                 if (bbtown.equals("true")) {
-                    return "#bbf2af] ";
+                    return "#55efc4] ";
                 } else if (bbtown.equals("false")){
                     return "";
                 } else {
@@ -147,32 +147,7 @@ public class EarthExpansion extends PlaceholderExpansion {
                     }
                 }
 
-                String townnationrank = "";
-                if (hastown) {
-                    String tranks = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_town_ranks%");
-                    if (tranks.contains("Mayor") || tranks.contains("Vicemayor") || tranks.contains("Assistant") || tranks.contains("Helper") || tranks.contains("Sheriff")) {
-                        if (hasnation) {
-                            String nranks = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_nation_ranks%") ;
-                            if (!nranks.equals("")) {
-                                townnationrank = "\n&7Town rank: %townyadvanced_towny_colour%%townyadvanced_town_ranks%\n&7Nation rank: %townyadvanced_towny_colour%%townyadvanced_nation_ranks%";
-                            }
-                        } else {
-                            townnationrank = "\n&7Town rank: %townyadvanced_towny_colour%%townyadvanced_town_ranks%";
-                        }
-                    } else {
-                        if (hasnation) {
-                            String nranks = PlaceholderAPI.setPlaceholders(player, "%townyadvanced_nation_ranks%") ;
-                            if (!nranks.equals("")) {
-                                townnationrank = "\n&7Nation rank: %townyadvanced_towny_colour%%townyadvanced_nation_ranks%";
-                            }
-                        } else {
-                            townnationrank = "";
-                        }
-                    }
-
-                }
-
-                String hover = realname + bounty + married + townnation + townnationrank;
+                String hover = realname + bounty + married + townnation;
                 hover = PlaceholderAPI.setPlaceholders(player, hover);
                 return hover;
         }

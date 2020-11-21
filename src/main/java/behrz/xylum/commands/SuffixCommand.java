@@ -107,7 +107,6 @@ public class SuffixCommand implements CommandExecutor, TabCompleter {
 
             return arguments;
         }
-
         return null;
     }
 }

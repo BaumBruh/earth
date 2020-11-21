@@ -8,12 +8,12 @@ import org.bukkit.entity.Player;
 
 public class MVPPlusCommand implements CommandExecutor {
 
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
+
             player.sendMessage(" ");
             player.sendMessage(ChatColor.GOLD + "MVP+ rank perks" + ChatColor.DARK_GRAY + ":");
             player.sendMessage(ChatColor.GOLD + " MVP+" + ChatColor.GRAY + " tag.");
@@ -37,14 +37,9 @@ public class MVPPlusCommand implements CommandExecutor {
             player.sendMessage(ChatColor.RED + "Purchase this rank, or see its perks in other servers at http://store.xylumearth.net/.");
             player.sendMessage(" ");
 
-
         } else {
             System.out.println("Only players can use /mvp+.");
         }
-
-
-
-
         return false;
     }
 }

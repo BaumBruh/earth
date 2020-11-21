@@ -8,13 +8,11 @@ import org.bukkit.entity.Player;
 
 public class HelpCommand implements CommandExecutor {
 
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
         if (sender instanceof Player) {
-
             Player player = (Player) sender;
+
             player.sendMessage(" ");
             player.sendMessage(ChatColor.DARK_GREEN + "XylumEarth help" + ChatColor.DARK_GRAY + ":");
             player.sendMessage(ChatColor.GRAY + " XylumEarth is a geopolitical Towny server. Alongside a dynmap, movecraft, breweries,");
@@ -34,8 +32,6 @@ public class HelpCommand implements CommandExecutor {
         } else {
             System.out.println("Only players can use /help.");
         }
-
-
         return false;
     }
 }
