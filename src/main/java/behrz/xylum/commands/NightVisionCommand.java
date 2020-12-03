@@ -13,8 +13,8 @@ public class NightVisionCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        Player player = (Player) sender;
         if (sender instanceof Player) {
+            Player player = (Player) sender;
             if (!player.hasPermission("nightvision.use")) {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6[Nightvision] &eOnly VIP and above can use /nv."));
                 return true;

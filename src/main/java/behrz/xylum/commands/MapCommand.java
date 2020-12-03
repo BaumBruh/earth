@@ -25,9 +25,8 @@ public class MapCommand implements CommandExecutor {
             message.addExtra(link);
             player.spigot().sendMessage( message );
 
-        } else {
+        } else
             System.out.println("Only players can use /map.");
-        }
         return false;
     }
 }

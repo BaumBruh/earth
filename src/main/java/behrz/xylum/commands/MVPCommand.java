@@ -32,9 +32,8 @@ public class MVPCommand implements CommandExecutor {
             player.sendMessage(ChatColor.RED + "Purchase this rank, or see its perks in other servers at http://store.xylumearth.net/.");
             player.sendMessage(" ");
 
-        } else {
+        } else
             System.out.println("Only players can use /mvp.");
-        }
         return false;
     }
 }

@@ -13,6 +13,4 @@ public class PlayerQuit implements Listener {
         Player player = ev.getPlayer();
         ev.setQuitMessage(ChatColor.RED + " " + ChatColor.ITALIC + player.getDisplayName() + ChatColor.RED + " " + ChatColor.ITALIC + "left the server.");
     }
-
-
 }

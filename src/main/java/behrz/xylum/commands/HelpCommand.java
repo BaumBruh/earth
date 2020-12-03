@@ -29,9 +29,8 @@ public class HelpCommand implements CommandExecutor {
             player.sendMessage(ChatColor.GRAY + " Movecraft, server and community wikies can be found at " + ChatColor.YELLOW + "/wiki" + ChatColor.GRAY + ".");
             player.sendMessage(" ");
 
-        } else {
+        } else
             System.out.println("Only players can use /help.");
-        }
         return false;
     }
 }

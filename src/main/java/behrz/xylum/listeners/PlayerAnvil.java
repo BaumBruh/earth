@@ -60,9 +60,8 @@ public class PlayerAnvil implements Listener {
                                         }
                                     } else if (a < b) {
                                         end = a;
-                                    } else {
+                                    } else
                                         end = b;
-                                    }
                                     out = out.substring(0, end);
                                 }
                                 if (out.startsWith("@")) {
@@ -73,9 +72,8 @@ public class PlayerAnvil implements Listener {
                                             out = ChatColor.of("#" + (String)this.main.hex.get(k)) + out;
                                         }
                                     }
-                                } else {
+                                } else
                                     out = ChatColor.translateAlternateColorCodes('&', out);
-                                }
                                 final_rename = String.valueOf(final_rename) + out;
                             }
                         }
@@ -83,13 +81,16 @@ public class PlayerAnvil implements Listener {
                         if (economy.has(player, player.getWorld().getName(), 600)) {
                             isColored = true;
                             meta.setDisplayName(final_rename);
+                            Earth.getPlugin().getLogger().info(player.getName() + " renamed an item to: " + final_rename);
                         } else {
                             isColored = false;
                             meta.setDisplayName(rename);
+                            Earth.getPlugin().getLogger().info(player.getName() + " renamed an item to: " + rename);
                         }
                     } else {
                         isColored = false;
                         meta.setDisplayName(rename);
+                        Earth.getPlugin().getLogger().info(player.getName() + " renamed an item to: " + rename);
                     }
                     result.setItemMeta(meta);
                 }
@@ -100,6 +101,8 @@ public class PlayerAnvil implements Listener {
     public void onAnvilUse(InventoryClickEvent event) {
         if (event.getInventory().getType() == InventoryType.ANVIL && event.getWhoClicked() instanceof Player) {
             Player player = (Player)event.getWhoClicked();
+            if (event.isCancelled())
+                return;
             if (event.getRawSlot() == 2) {
                 if (isColored) {
                     player.sendMessage(ChatColor.DARK_GREEN + "[Color] " + ChatColor.GREEN + "You renamed this item for 600 gold.");

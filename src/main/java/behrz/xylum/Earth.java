@@ -22,7 +22,6 @@ public final class Earth extends JavaPlugin {
 
     long expirationTime = 360L;
     long saveInterval = 0L;
-    Config config;
     AltData altData;
     AltListener altListener;
 
@@ -42,7 +41,6 @@ public final class Earth extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
         getServer().getPluginManager().registerEvents(new PlayerMove(), this);
-        getServer().getPluginManager().registerEvents(new Riptide(), this);
         getServer().getPluginManager().registerEvents(new PlayerAnvil(this), this);
         getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
         getServer().getPluginManager().registerEvents(new EntityExplode(), this);
@@ -69,7 +67,8 @@ public final class Earth extends JavaPlugin {
         BukkitTask discord = new DiscordAnnouncement(this).runTaskTimer(this,12000l,42000l);
         BukkitTask map = new MapAnnouncement(this).runTaskTimer(this,18000l,42000l);
         BukkitTask vote = new VoteAnnouncement(this).runTaskTimer(this,24000l,42000l);
-        BukkitTask company = new CompanyAnnouncement(this).runTaskTimer(this,30000l,42000l);
+        BukkitTask radio = new RadioAnnouncement(this).runTaskTimer(this,30000l,42000l);
+     //   BukkitTask company = new CompanyAnnouncement(this).runTaskTimer(this,30000l,42000l);
         BukkitTask wiki = new WikiAnnouncement(this).runTaskTimer(this,36000l,42000l);
         BukkitTask bounty = new BountyAnnouncement(this).runTaskTimer(this,42000l,42000l);
         getLogger().info("Loaded announcements.");
@@ -95,13 +94,6 @@ public final class Earth extends JavaPlugin {
 
     public static Earth getPlugin() {
         return plugin;
-    }
-
-    public static boolean usingPermissions() {
-        return true;
-    }
-    public static boolean usingPermissionsForNonNameChanges() {
-        return true;
     }
 
     private boolean setupPAPI() {
@@ -133,7 +125,6 @@ public final class Earth extends JavaPlugin {
 
     private void setupAlts() {
         getCommand("alt").setExecutor(new AltCommand(this));
-        this.config = new Config();
         saveDefaultConfig();
         this.altData = new AltData(this);
         this.altData.reloadIpDataConfig();

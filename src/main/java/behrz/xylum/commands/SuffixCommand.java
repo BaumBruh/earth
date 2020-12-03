@@ -55,22 +55,18 @@ public class SuffixCommand implements CommandExecutor, TabCompleter {
                                 .replace("light_purple", "&d")
                                 .replace("yellow", "&e")
                                 .replace("white", "&f")
-                                + "[" + args[1] + "]" + ChatColor.RESET;
+                                + "[" + args[1].replace("&","") + "]" + ChatColor.RESET;
                         Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(), "lp user " + player.getName() + " meta setsuffix 500 \"&r " + tag + "\"");
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&5[Suffix] &dSuccesfully set suffix to " + tag + "&d."));
-                    } else {
+                    } else
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&5[Suffix] &dThat suffix is too long, it can only be 8 characters."));
-                    }
-
-                } else {
+                } else
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&5[Suffix] &dYou have a color, what's the text?"));
-                }
             } else if (args[0].equalsIgnoreCase("remove")) {
                 Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(), "lp user " + player.getName() + " meta removesuffix 500");
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&5[Suffix] &dRemoved custom suffix."));
-            } else {
+            } else
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&5[Suffix] &dInvalid color, try using tab complete. If you're not sure what each color is, do /colors. Use /suffix remove to clear current suffix."));
-            }
 
         } else {
             player.sendMessage(" ");

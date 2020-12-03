@@ -95,9 +95,8 @@ public class RulesCommand implements CommandExecutor, TabCompleter {
                 player.sendMessage(ChatColor.RED + "All rules are subject to change.");
                 player.sendMessage(" ");
             }
-        } else {
+        } else
             System.out.println("Only players can use /rules.");
-        }
         return false;
     }
 

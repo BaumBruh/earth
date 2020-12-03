@@ -16,18 +16,13 @@ public class PlayerInteract implements Listener {
         Player player = event.getPlayer();
         Entity entity = event.getRightClicked();
 
-        if (!player.getActiveItem().getType().equals(Material.AIR)) {
+        if (!player.getActiveItem().getType().equals(Material.AIR))
             return;
-        }
 
         if (entity instanceof Tameable) {
             Tameable tamed = (Tameable) entity;
-            if (!tamed.isTamed()) {
+            if (!tamed.isTamed() || tamed.getOwner() == null || tamed.getOwner() == player)
                 return;
-            }
-            if (tamed.getOwner() == player) {
-                return;
-            }
             player.sendMessage(ChatColor.GRAY + " " + ChatColor.ITALIC + "" + ChatColor.UNDERLINE + tamed.getOwner().getName() + ChatColor.GRAY + " " + ChatColor.ITALIC + "owns this " + entity.getType().getKey().toString().replace("minecraft:", "") + "...");
         }
     }

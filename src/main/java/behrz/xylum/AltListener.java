@@ -27,15 +27,10 @@ public class AltListener implements Listener {
         this.plugin.altData.addUpdateIp(ip, uuid, name);
         if (this.plugin.saveInterval == 0L)
             this.plugin.altData.saveIpDataConfig();
-        String altString = this.plugin.altData.getFormattedAltString(name,
-                ip,
-                uuid,
-                this.plugin.config.getJoinPlayer(),
-                this.plugin.config.getJoinPlayerList(),
-                this.plugin.config.getJoinPlayerSeparator());
+        String altString = this.plugin.altData.getFormattedAltString(name, ip, uuid, "{0} may be an alt of ", "{0}", ", ");
         if (altString != null) {
             this.plugin.getLogger().info(altString.replaceAll("&[0123456789AaBbCcDdEeFfKkLlMmNnOoRr]", ""));
-            String notifyString = ChatColor.translateAlternateColorCodes('&', String.valueOf(this.plugin.config.getJoinPlayerPrefix()) + altString);
+            String notifyString = ChatColor.translateAlternateColorCodes('&', String.valueOf("&4[Alts] &c") + altString);
             for (Player p : this.plugin.getServer().getOnlinePlayers()) {
                 if (p.hasPermission("altdetector.notify"))
                     p.sendMessage(notifyString);

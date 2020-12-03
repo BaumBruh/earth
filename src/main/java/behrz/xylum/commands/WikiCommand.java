@@ -21,9 +21,8 @@ public class WikiCommand implements CommandExecutor {
             player.sendMessage(ChatColor.GRAY + " You can access more infomation about MoveCraft at " + ChatColor.BLUE + "https://github.com/HightechCaveman/Xylum/wiki/Movecraft");
             player.sendMessage(" ");
 
-        } else {
+        } else
             System.out.println("Only players can use /wiki.");
-        }
         return false;
     }
 }
