@@ -1,0 +1,19 @@
+package com.github.polarbehrz.earth.listeners;
+
+import com.github.polarbehrz.earth.Earth;
+import org.bukkit.ChatColor;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerMoveEvent;
+
+public class PlayerMove implements Listener {
+
+    @EventHandler
+    public void limitHeight(PlayerMoveEvent event) {
+        if (event.getTo().getBlockY() > 1000) {
+            event.setCancelled(true);
+            event.getPlayer().sendMessage(ChatColor.DARK_RED + "[Limit] " + ChatColor.RED + "That's a little too high.");
+            Earth.getPlugin().getLogger().info(event.getPlayer().getName() + " is attempting to fly past 1000...");
+        }
+    }
+}

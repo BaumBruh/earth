@@ -1,6 +1,6 @@
 name: Earth
 version: ${project.version}
-main: behrz.xylum.Earth
+main: com.github.polarbehrz.earth.Earth
 api-version: 1.16
 depend: [Vault]
 softdepend: [PlaceholderAPI]
@@ -39,9 +39,6 @@ commands:
   prefix:
     description: "pre"
     permission: xylum.prefix.use
-  color:
-    description: "coolor"
-    aliases: [colors]
 
 permissions:
   nightvision.player:
