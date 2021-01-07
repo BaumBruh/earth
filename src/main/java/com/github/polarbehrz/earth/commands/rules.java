@@ -11,7 +11,7 @@ import sun.tools.jconsole.Tab;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RulesCommand implements CommandExecutor, TabCompleter {
+public class rules implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
