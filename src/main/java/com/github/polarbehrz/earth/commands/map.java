@@ -18,9 +18,9 @@ public class map implements CommandExecutor {
             TextComponent message = new TextComponent( "The server dynmap is available at " );
             message.setColor( ChatColor.GREEN );
 
-            TextComponent link = new TextComponent( "http://xylumearth.net:8123/" );
+            TextComponent link = new TextComponent( "http://xylumearth.net:8345/" );
             link.setColor( ChatColor.GREEN );
-            link.setClickEvent( new ClickEvent(ClickEvent.Action.OPEN_URL, "http://xylumearth.net:8123/") );
+            link.setClickEvent( new ClickEvent(ClickEvent.Action.OPEN_URL, "http://xylumearth.net:8345/") );
 
             message.addExtra(link);
             player.spigot().sendMessage( message );
