@@ -26,7 +26,7 @@ public class help implements CommandExecutor {
             player.sendMessage(ChatColor.GRAY + " More information, such as guides for movecraft, cannons, chestshops, custom recipes,");
             player.sendMessage(ChatColor.GRAY + " and voting links can be found on our " + ChatColor.AQUA + "/discord" + ChatColor.GRAY + ".");
             player.sendMessage(ChatColor.GRAY + " The dynmap can be accessed through " + ChatColor.GREEN + "/map" + ChatColor.GRAY + ".");
-            player.sendMessage(ChatColor.GRAY + " Movecraft, server and community wikies can be found at " + ChatColor.YELLOW + "/wiki" + ChatColor.GRAY + ".");
+            player.sendMessage(ChatColor.GRAY + " Vehicles, server and community wikis can be found at " + ChatColor.YELLOW + "/wiki" + ChatColor.GRAY + ".");
             player.sendMessage(" ");
 
         } else
