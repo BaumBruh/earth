@@ -16,7 +16,7 @@ public class wiki implements CommandExecutor {
 
             player.sendMessage(" ");
             player.sendMessage(ChatColor.DARK_GREEN + "XylumEarth wikis" + ChatColor.DARK_GRAY + ":");
-            player.sendMessage(ChatColor.GRAY + " You can access the wiki at " + ChatColor.GREEN + "https://github.com/xylumearth/wiki/");
+            player.sendMessage(ChatColor.GRAY + " You can access the wiki at " + ChatColor.GREEN + "https://github.com/BaumBruh/xylumearthwiki/wiki");
             player.sendMessage(" ");
 
         } else
