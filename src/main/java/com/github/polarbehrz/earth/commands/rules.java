@@ -62,6 +62,8 @@ public class rules implements CommandExecutor, TabCompleter {
                     player.sendMessage(ChatColor.GRAY + " 22. Do not spawn kill or setup a trap that kills players.");
                     player.sendMessage(ChatColor.GRAY + "    22a. Spawn traps are allowed, provided they do no harm to players.");
                     player.sendMessage(ChatColor.GRAY + " 23. Do not build any hate flags, signs, or monuments.");
+                    player.sendMessage(ChatColor.GRAY + " 24. Do not destroy vehicles while they are in the owner's claims");
+                    player.sendMessage(ChatColor.GRAY + " 25. Vehicles may be destroyed in wilderness, or in claim's that aren't the vehicle owner's");
                     player.sendMessage(" ");
                     player.sendMessage(ChatColor.RED + "Do /rules 1 to read the previous page.");
                     player.sendMessage(ChatColor.RED + "All rules are subject to change.");
